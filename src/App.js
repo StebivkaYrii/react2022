@@ -1,5 +1,3 @@
-import './App.css';
-import {Comments, Posts, Users} from './Components';
 
 export const App = () => {
   return (
