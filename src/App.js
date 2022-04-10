@@ -1,14 +1,20 @@
+import {useState} from "react";
+
+import styles from './App.module.css'
+import {Posts, Users, UserInfo} from "./components";
 
 export const App = () => {
-  return (
-      <div>
-        <div className={'wrap'}>
-          <Users/>
-          <Posts/>
+    const [user, setUser] = useState(null)
+    const [userIdForPosts, setUserIdForPosts] = useState(null)
+
+
+    return (
+        <div>
+            <div className={styles.usersAndInfo}>
+                <Users setUser={setUser} setUserIdForPosts={setUserIdForPosts}/>
+                {user && <UserInfo user={user} setUserIdForPosts={setUserIdForPosts}/>}
+            </div>
+            {userIdForPosts && <Posts userId={userIdForPosts}/>}
         </div>
-          <div className={'coms'}>
-              <Comments/>
-          </div>
-      </div>
-  );
+    );
 }

@@ -1,0 +1,13 @@
+.usersAndInfo {
+    display: flex;
+    justify-content: space-around;
+}
+
+.userStyle {
+    width: 300px;
+    background: aquamarine;
+    color: red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
