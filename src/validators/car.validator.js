@@ -5,7 +5,7 @@ const carValidator = joi.object({
         'string.empty': 'Model не може бути пустим',
         'string.min': 'Model має буті мінімум 2 символи'
     }),
-    prise: joi.number().min(0).max(1000000).required(),
+    price: joi.number().min(0).max(1000000).required(),
     year: joi.number().min(1990).max(new Date().getFullYear()).required()
 });
 

@@ -3,13 +3,13 @@ import {useState} from "react";
 
 export const App = () => {
 
-    const [newCar, setNewCar] = useState(null)
-
+    const [newCar, setNewCar] = useState(null);
+   const [carFormUpdate,setCarFormUpdate] = useState(null)
     return (
         <div>
-            <CarForm setNewCar={setNewCar}/>
+            <CarForm setNewCar={setNewCar} carFormUpdate={carFormUpdate}/>
             <hr/>
-            <Cars newCar={newCar}/>
+            <Cars newCar={newCar} setCarFormUpdate={setCarFormUpdate}/>
         </div>
     );
 }

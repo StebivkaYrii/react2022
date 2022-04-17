@@ -1,15 +1,27 @@
-import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 
 import {carService} from "../../services";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {carValidator} from "../../validators";
+import {useEffect} from "react";
 
-const CarForm = ({setNewCar}) => {
+const CarForm = ({setNewCar, carFormUpdate}) => {
 
     // const [formError, setFormError] = useState({});
 
-    const {register, reset, handleSubmit, formState: {errors}} = useForm({resolver:joiResolver(carValidator)});
+    const {register, reset, handleSubmit, formState: {errors}, setValue} = useForm({
+        resolver: joiResolver(carValidator),
+        mode: "onTouched"
+    });
+
+    useEffect(() => {
+        if (carFormUpdate) {
+            const {model, price, year} = carFormUpdate;
+            setValue('model', model)
+            setValue('price', price)
+            setValue('year', year)
+        }
+    },[carFormUpdate])
 
     const submit = async (car) => {
         try {
@@ -23,10 +35,13 @@ const CarForm = ({setNewCar}) => {
     return (
         <form onSubmit={handleSubmit(submit)}>
             <div><label>Model: <input type="text" {...register('model')}/></label></div>
+            {errors.model && <span>{errors.model.message}</span>}
             {/*{formError.model && <span>{formError.model[0]}</span>}*/}
-            <div><label>Price:<input type="text"{...register('price', {valueAsNumber: true})}/></label></div>
+            <div><label>Price:<input type="number"{...register('price', {valueAsNumber: true})}/></label></div>
+            {errors.price && <span>{errors.price.message}</span>}
             {/*{formError.price && <span>{formError.price[0]}</span>}*/}
-            <div><label>Year:<input type="text"{...register('year', {valueAsNumber: true})}/></label></div>
+            <div><label>Year:<input type="number"{...register('year', {valueAsNumber: true})}/></label></div>
+            {errors.year && <span>{errors.year.message}</span>}
             {/*{formError.year && <span>{formError.year[0]}</span>}*/}
             <hr/>
             <button>save</button>
