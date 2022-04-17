@@ -21,7 +21,7 @@ const CarForm = ({setNewCar, carFormUpdate}) => {
             setValue('price', price)
             setValue('year', year)
         }
-    },[carFormUpdate])
+    }, [carFormUpdate])
 
     const submit = async (car) => {
         try {

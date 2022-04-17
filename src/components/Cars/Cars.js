@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {carService} from "../../services";
 import {Car} from "../Car/Car";
 
-const Cars = ({newCar,setCarFormUpdate}) => {
+const Cars = ({newCar, setCarFormUpdate}) => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
