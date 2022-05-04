@@ -11,6 +11,7 @@ const App = () => {
                 <Route path="cars/:carId" element={<SingleCarPage/>}/>
                 <Route path="cars" element={<CarsPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
+
             </Route>
         </Routes>
     );
